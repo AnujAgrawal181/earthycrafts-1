@@ -11,7 +11,7 @@ import { kebabCase, lowerCase } from "lodash";
 
 export default function BreadcrumbsContext({ items, className }: { items: string[]; className?: string }) {
   return (
-    <Breadcrumb className={cn("", className)}>
+    <Breadcrumb className={cn("capitalize", className)}>
       <BreadcrumbList>
         {items.map((item, index) =>
           index === items.length - 1 ? (

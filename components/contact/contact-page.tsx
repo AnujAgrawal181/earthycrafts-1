@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -10,6 +10,19 @@ import { Mail, Phone } from "lucide-react";
 import { FaWhatsapp, FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { useMutation } from "@tanstack/react-query";
 import { enquiryPost } from "@/lib/api";
+import { useSearchParams } from "next/navigation";
+
+const MessageParams = ({ setMessage }: { setMessage: (message: string) => void }) => {
+  const searchParams = useSearchParams();
+  const urlMessage = searchParams.get("text");
+
+  useEffect(() => {
+    console.log("urlMessage", urlMessage);
+    if (urlMessage) setMessage(urlMessage);
+  }, [urlMessage]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  return null;
+};
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -46,6 +59,9 @@ export default function ContactPage() {
 
   return (
     <div className="flex flex-col min-h-screen overflow-hidden">
+      <Suspense>
+        <MessageParams setMessage={(message: string) => setFormData((prev) => ({ ...prev, message }))} />
+      </Suspense>
       <main className="flex-grow">
         <div className="container mx-auto px-4 py-12">
           <motion.h1
@@ -153,7 +169,7 @@ export default function ContactPage() {
                   className="text-muted-foreground hover:text-foreground"
                 >
                   <FaLinkedin size={28} />
-                  <span className="sr-only">Twitter</span>
+                  <span className="sr-only">LinkedIn</span>
                 </Link>
               </div>
 

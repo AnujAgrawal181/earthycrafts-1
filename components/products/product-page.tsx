@@ -7,6 +7,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { imgPlaceholder } from "@/public/assets/some-data";
 import BreadcrumbsContext from "../breadcrumbs-context";
+import EnquireProduct from "./enquire-product";
+import ShareProduct from "./share-product";
 
 export default function ProductDetails({ product }: { product: INewProduct }) {
   const [selectedImage, setSelectedImage] = useState(
@@ -67,8 +69,10 @@ export default function ProductDetails({ product }: { product: INewProduct }) {
               <h1 className="text-3xl font-bold">{product.name}</h1>
               <p className="text-gray-600 mt-2">{product.description}</p>
             </div>
+
             <Separator />
-            <div className="grid grid-cols-2 gap-4">
+
+            <div className="grid grid-cols-2 gap-4 capitalize">
               <div>
                 <h2 className="font-semibold">Product Code</h2>
                 <p>{product.productCode}</p>
@@ -102,7 +106,15 @@ export default function ProductDetails({ product }: { product: INewProduct }) {
                 <p>{product.subCategory}</p>
               </div>
             </div>
+
+            <div className="flex gap-4">
+              <EnquireProduct productCode={product.productCode} productName={product.name} />
+
+              <ShareProduct productCode={product.productCode} productName={product.name} />
+            </div>
+
             <Separator />
+
             <div>
               <h2 className="text-xl font-semibold mb-2">Features</h2>
               <ul className="list-disc pl-5 space-y-1">

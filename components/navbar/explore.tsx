@@ -17,9 +17,11 @@ export default function Explore() {
       <div className="grid gap-4">
         <div className="flex items-center justify-between">
           <h3 className="text-lg font-medium">Shop by Space</h3>
-          <Button variant="link" size="sm">
-            View all
-          </Button>
+          <Link href="/products">
+            <Button variant="link" size="sm">
+              View all
+            </Button>
+          </Link>
         </div>
         <div className="grid grid-cols-3 gap-4">
           {primaryCategories.map((category) => (
@@ -53,9 +55,11 @@ export default function Explore() {
       <div className="grid gap-4">
         <div className="flex items-center justify-between">
           <h3 className="text-lg font-medium">Shop by Collection</h3>
-          <Button variant="link" size="sm">
-            View all
-          </Button>
+          <Link href="/products">
+            <Button variant="link" size="sm">
+              View all
+            </Button>
+          </Link>
         </div>
         <div className="grid grid-cols-4 gap-4">
           {secondaryCategories.map((category) => (

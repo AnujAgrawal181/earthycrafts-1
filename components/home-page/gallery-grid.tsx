@@ -22,13 +22,13 @@ export default function GalleryGrid() {
       const width = window.innerWidth;
       if (width < 640) {
         // Small devices
-        setVisibleImages(images.slice(0, 5));
+        setVisibleImages(images?.slice(0, 5));
       } else if (width < 1024) {
         // Medium devices
-        setVisibleImages(images.slice(0, 9));
+        setVisibleImages(images?.slice(0, 9));
       } else {
         // Large devices
-        setVisibleImages(images.slice(0, 12));
+        setVisibleImages(images?.slice(0, 12));
       }
     };
 

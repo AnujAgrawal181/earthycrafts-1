@@ -13,7 +13,7 @@ export default function CustomizeSection() {
         </h1>
         <Link
           className="px-6 py-1 rounded-full gap-2 flex items-center bg-transparent hover:bg-black/20 text-white border-2  group"
-          href="/customize"
+          href="/customization"
         >
           <span className="text-lg">Customize</span>
           <ArrowRight className=" w-0 inline-flex group-hover:w-5 transition-all duration-500" />

@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="container mx-auto px-4 pt-8 ">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="flex flex-col items-start">
-            <Image src="/images/logo.svg" alt="Earthy Crafts Logo" width={150} height={50} />
+            <Image src="/images/logo.svg" alt="Earthy Crafts Logo" width={150} height={50} priority />
             <p className="mt-2 text-sm text-muted-foreground">Handmade with love</p>
           </div>
           <div>

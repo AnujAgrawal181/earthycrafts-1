@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Head from "next/head";
 
 export default function HeroSection() {
   const text = "More than just handicraft, a symphony of natural stone and design.";
@@ -15,29 +16,31 @@ export default function HeroSection() {
     visible: { opacity: 1, y: 0 },
   };
 
+  const landscapeVideo = "https://bseuburnlk.ufs.sh/f/qq9xtZ1seAvycvd2SwJuyfq493Yi7VxRAZmMlNvjh6CD5LP8";
+  const portraitVideo = "https://bseuburnlk.ufs.sh/f/qq9xtZ1seAvyvnez94u9dIKFSu3x2U5kXC7s6GO4jaWgZEqT";
+
   return (
     <main className="relative">
+      {/* Preload Video */}
+      <Head>
+        <link rel="preload" as="video" href={landscapeVideo} type="video/webm" />
+        <link rel="preload" as="video" href={portraitVideo} type="video/webm" />
+      </Head>
+
       {/* Landscape Intro Video */}
-
-      {/* <Image
-        src="https://bseuburnlk.ufs.sh/f/qq9xtZ1seAvyo6Msd3btLYOjF6kAM8qWUucgPDpH2b3ZofTC"
-        width={1400}
-        height={1400}
-        alt="Earthycrafts logo"
-        className="md:absolute md:block hidden top-0 right-0 brightness-75 w-screen h-screen z-0"
-      /> */}
-
       <BackgroundVideo
-        src="https://bseuburnlk.ufs.sh/f/qq9xtZ1seAvycvd2SwJuyfq493Yi7VxRAZmMlNvjh6CD5LP8"
+        src={landscapeVideo}
         className="md:absolute md:block hidden top-0 right-0 brightness-75 z-0"
         format="webm"
+        poster="/videos/intro-landscape.png"
       />
 
       {/* Portrait Intro Video */}
       <BackgroundVideo
-        src="https://bseuburnlk.ufs.sh/f/qq9xtZ1seAvyvnez94u9dIKFSu3x2U5kXC7s6GO4jaWgZEqT"
+        src={portraitVideo}
         className="md:hidden absolute top-0 right-0 brightness-75 z-0"
         format="webm"
+        poster="/videos/intro-portrait.png"
       />
 
       <div className="z-10 text-white drop-shadow-lg h-screen flex flex-col gap-2 items-center justify-center text-center">
@@ -48,6 +51,7 @@ export default function HeroSection() {
           width={400}
           height={400}
           alt="Earthycrafts logo"
+          priority
         />
         {/* Tag line */}
         <motion.p className=" px-1 text-lg sm:text-3xl md:text-4xl font-semibold max-w-[700px] " aria-label={text}>

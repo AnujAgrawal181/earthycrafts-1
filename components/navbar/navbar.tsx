@@ -25,7 +25,7 @@ export default function Navbar({ className }: { className?: string }) {
 
           {/* Centered Logo */}
           <Link href="/" className="font-extrabold text-3xl">
-            <Image src="/images/logo.svg" width={150} height={70} alt="Logo" />
+            <Image src="/images/logo.svg" width={150} height={70} alt="Logo" priority />
           </Link>
 
           <SearchComponent />
@@ -59,7 +59,7 @@ export default function Navbar({ className }: { className?: string }) {
 
           {/* Centered Logo */}
           <Link href="/home" className="font-extrabold text-3xl">
-            <Image src="/images/logo.svg" width={150} height={70} alt="Logo" />
+            <Image src="/images/logo.svg" width={150} height={70} alt="Logo" priority />
           </Link>
 
           {/* Right-side links list */}

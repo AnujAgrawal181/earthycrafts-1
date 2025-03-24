@@ -14,6 +14,7 @@ import SearchCards from "./search-cards";
 export default function SearchComponent() {
   const [query, setQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [open, setOpen] = useState(false);
 
   const { data: products, isLoading } = useQuery({
     queryKey: ["products"],
@@ -44,12 +45,13 @@ export default function SearchComponent() {
   }, [query, products]);
 
   const onclose = () => {
+    setOpen(!open);
     setQuery("");
     setSearchResults([]);
   };
 
   return (
-    <Dialog onOpenChange={onclose}>
+    <Dialog open={open} onOpenChange={onclose}>
       <TooltipContext context="Search products">
         <DialogTrigger asChild>
           <Button variant="ghost" size="icon" className="rounded-full">
@@ -75,7 +77,9 @@ export default function SearchComponent() {
                 <p className="text-center col-span-2">No results found</p>
               ) : (
                 // Display search results
-                searchResults.map((product: INewProduct) => <SearchCards key={product.productCode} product={product} />)
+                searchResults.map((product: INewProduct) => (
+                  <SearchCards setOpen={setOpen} key={product.productCode} product={product} />
+                ))
               )
             ) : (
               // Search query is less than 3 characters

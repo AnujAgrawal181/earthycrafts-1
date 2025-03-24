@@ -6,7 +6,7 @@ import Link from "next/link";
 import { imgPlaceholder } from "@/public/assets/some-data";
 import TooltipContext from "../contexts/tooltip-context";
 
-export default function SearchCards({ product }: { product: INewProduct }) {
+export default function SearchCards({ product, setOpen }: { product: INewProduct; setOpen: (open: boolean) => void }) {
   const imageUrl = product.images?.find((image) => image.main)?.image;
 
   return (
@@ -14,6 +14,7 @@ export default function SearchCards({ product }: { product: INewProduct }) {
       <Link
         href={"/products/" + kebabCase(product.productCode)}
         className=" grid grid-cols-3 gap-2 hover:shadow-md shadow-sm rounded-md bg-neutral-50 overflow-hidden"
+        onClick={() => setOpen(false)}
       >
         <Image
           src={imageUrl || imgPlaceholder}

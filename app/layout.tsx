@@ -34,6 +34,7 @@ export default function RootLayout({
         <link rel="preload" as="video" href={portraitVideo} type="video/webm" />
         <meta name="apple-mobile-web-app-title" content="Earthycrafts" />
         <link rel="manifest" href="/site.webmanifest" />
+        <meta name="robots" content="index, follow"></meta>
       </Head>
       <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-8ZLD7YGKHN" />
       <Script

@@ -1,32 +1,16 @@
-"use client";
-
 import BackgroundVideo from "@/components/video/background-video";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import Head from "next/head";
 
 export default function HeroSection() {
   const text = "More than just handicraft, a symphony of natural stone and design.";
-  const exploreText = "Explore";
-
-  const letterVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 },
-  };
 
   const landscapeVideo = "https://bseuburnlk.ufs.sh/f/qq9xtZ1seAvycvd2SwJuyfq493Yi7VxRAZmMlNvjh6CD5LP8";
   const portraitVideo = "https://bseuburnlk.ufs.sh/f/qq9xtZ1seAvyvnez94u9dIKFSu3x2U5kXC7s6GO4jaWgZEqT";
 
   return (
     <main className="relative">
-      {/* Preload Video */}
-      <Head>
-        <link rel="preload" as="video" href={landscapeVideo} type="video/webm" />
-        <link rel="preload" as="video" href={portraitVideo} type="video/webm" />
-      </Head>
-
       {/* Landscape Intro Video */}
       <BackgroundVideo
         src={landscapeVideo}
@@ -54,39 +38,17 @@ export default function HeroSection() {
           priority
         />
         {/* Tag line */}
-        <motion.p className=" px-1 text-lg sm:text-3xl md:text-4xl font-semibold max-w-[700px] " aria-label={text}>
-          {text.split("").map((char, index) => (
-            <motion.span
-              key={`${char}-${index}`}
-              variants={letterVariants}
-              initial="hidden"
-              animate="visible"
-              transition={{ delay: index * 0.03, duration: 0.5 }}
-            >
-              {char}
-            </motion.span>
-          ))}
-        </motion.p>
+        <h3 className=" px-1 text-lg sm:text-3xl md:text-4xl font-semibold max-w-[700px] " aria-label={text}>
+          {text}
+        </h3>
         {/* Explore Action Button */}
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: text.length * 0.03 + 0.5 }}>
-          <Link
-            className="px-6 py-1 rounded-full gap-0.5 flex items-center bg-transparent hover:bg-black/20 text-white border-2 group"
-            href="/products"
-          >
-            {exploreText.split("").map((char, index) => (
-              <motion.span
-                key={`explore-${char}-${index}`}
-                variants={letterVariants}
-                initial="hidden"
-                animate="visible"
-                transition={{ delay: text.length * 0.03 + 0.5 + index * 0.05, duration: 0.5 }}
-              >
-                {char}
-              </motion.span>
-            ))}
-            <ArrowRight className="w-0 inline-flex group-hover:w-5 transition-all duration-500" />
-          </Link>
-        </motion.div>
+        <Link
+          className="px-6 py-1 rounded-full gap-0.5 flex items-center bg-transparent hover:bg-black/20 text-white border-2 group"
+          href="/products"
+        >
+          Explore
+          <ArrowRight className="w-0 inline-flex group-hover:w-5 transition-all duration-500" />
+        </Link>
       </div>
     </main>
   );

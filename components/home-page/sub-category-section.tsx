@@ -82,7 +82,7 @@ const categories3 = [
 export default function SubCategorySection() {
   return (
     <section className="md:py-12 py-4">
-      <h1 className="md:text-5xl text-4xl font-bold text-center mb-12">Shop by Our Collection</h1>
+      <h1 className="md:text-5xl text-4xl font-black text-center mb-12 text-neutral-800">Shop by Our Collection</h1>
       <div className="container lg:flex hidden flex-col gap-8 mx-auto md:px-24 sm:px-16 px-8 ">
         <GridLayout categories={categories1} className="" right />
         <GridLayout categories={categories2} className="" />

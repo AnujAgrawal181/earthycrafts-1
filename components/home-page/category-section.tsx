@@ -34,6 +34,8 @@ export default function CategorySection() {
         </h1>
       </div>
 
+      <h1 className="md:text-5xl text-4xl font-black text-center mb-12 text-neutral-800">Shop by your Space</h1>
+
       <GridLayout categories={categories} />
     </section>
   );

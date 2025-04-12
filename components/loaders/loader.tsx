@@ -3,54 +3,29 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-interface LoaderProps {
-  onLoadingComplete: () => void;
-  videoSrc: string;
-}
-
-export default function Loader({ onLoadingComplete, videoSrc }: LoaderProps) {
-  const [videoLoaded, setVideoLoaded] = useState(false);
+export default function Loader() {
   const [showLoader, setShowLoader] = useState(true);
 
+  const router = useRouter();
+
   useEffect(() => {
-    const video = document.createElement("video");
-    video.src = videoSrc;
-    video.preload = "auto";
-
-    video.oncanplaythrough = () => {
-      setVideoLoaded(true);
-      setTimeout(() => {
-        setShowLoader(false);
-        console.log("Video ready!", videoSrc);
-        onLoadingComplete();
-      }, 2500);
-    };
-
-    video.onerror = () => {
-      console.error("Failed to load video:", video.src);
+    const onLoadingComplete = () => {
+      setShowLoader(false);
+      // Simulate a delay before redirecting to the home page
+      setShowLoader(false);
+      router.replace("/home");
     };
 
     const timeout = setTimeout(() => {
-      setShowLoader(false);
-      console.log("Video ready!", videoSrc);
       onLoadingComplete();
     }, 3000);
 
-    // Fetch the video to force it to load faster on Vercel
-    fetch(videoSrc, { cache: "reload" })
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed to preload video");
-        console.log("Video preloaded:", videoSrc);
-      })
-      .catch(console.error);
-
     return () => {
-      video.oncanplaythrough = null;
-      video.onerror = null;
       clearTimeout(timeout);
     };
-  }, [videoSrc, onLoadingComplete]);
+  }, [router]);
 
   return (
     <AnimatePresence>
@@ -78,14 +53,14 @@ export default function Loader({ onLoadingComplete, videoSrc }: LoaderProps) {
               />
               <motion.div
                 initial={{ width: "0%" }}
-                animate={{ width: videoLoaded ? "100%" : "90%" }}
+                animate={{ width: showLoader ? "100%" : "90%" }}
                 transition={{ duration: 2, ease: "easeInOut" }}
                 className="absolute -bottom-8 left-0 h-0.5 bg-black/30"
               >
                 <motion.div
                   className="absolute top-0 left-0 h-full w-full bg-black"
                   initial={{ scaleX: 0 }}
-                  animate={{ scaleX: videoLoaded ? 1 : 0 }}
+                  animate={{ scaleX: showLoader ? 1 : 0 }}
                   transition={{ duration: 1.5, ease: "easeInOut" }}
                   style={{ originX: 0 }}
                 />

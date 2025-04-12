@@ -20,7 +20,7 @@ export default function ProductCard({
   return (
     <Card className={cn(className, "w-80 overflow-hidden")}>
       <CardContent className="p-0 w-80 overflow-hidden h-[480px] ">
-        <Link href={`/products/${kebabCase(product.productCode)}`}>
+        <Link href={`/products/${kebabCase(product.productCode)}`} target="_blank">
           <Image
             src={mainImage?.image || imgPlaceholder}
             alt={product.name}

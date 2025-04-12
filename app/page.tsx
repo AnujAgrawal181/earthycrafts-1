@@ -1,7 +1,5 @@
-"use client";
-
-import IntroLoader from "@/components/loaders/intro-loader";
+import Loader from "@/components/loaders/loader";
 
 export default function Home() {
-  return <IntroLoader />; // Prevents rendering issues
+  return <Loader />;
 }

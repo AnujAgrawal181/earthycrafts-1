@@ -79,12 +79,6 @@ export default function ProductsLayout({ categories, products }: ProductsLayoutP
     [products, selectedCategory, selectedSubCategory]
   );
 
-  // useEffect(() => {
-  //   console.log("filteredProducts", filteredProducts);
-  //   console.log("selectedCategory", selectedCategory);
-  //   console.log("selectedSubCategory", selectedSubCategory);
-  // }, [filteredProducts, selectedCategory, selectedSubCategory]);
-
   return (
     <main>
       <Suspense fallback={<div>Loading filters...</div>}>
@@ -124,6 +118,7 @@ export default function ProductsLayout({ categories, products }: ProductsLayoutP
                             onClick={() => {
                               setSelectedCategory(category.name);
                               setSelectedSubCategory("");
+                              setOpen(false);
                             }}
                             className={cn(
                               "p-4 justify-between capitalize",
@@ -143,6 +138,7 @@ export default function ProductsLayout({ categories, products }: ProductsLayoutP
                                   className={cn("", selectedSubCategory === subCategory ? "bg-accent" : "")}
                                   onClick={() => {
                                     setSelectedSubCategory(subCategory);
+                                    setOpen(false);
                                   }}
                                 >
                                   <Link
@@ -171,6 +167,7 @@ export default function ProductsLayout({ categories, products }: ProductsLayoutP
                         onClick={() => {
                           setSelectedCategory(category.name);
                           setSelectedSubCategory("");
+                          setOpen(false);
                         }}
                       >
                         <Link href={`/products?category=${kebabCase(category.name)}`} className=" capitalize">
@@ -191,7 +188,7 @@ export default function ProductsLayout({ categories, products }: ProductsLayoutP
         </Sidebar>
 
         <div className="flex-1 p-6">
-          <div className="mb-6 flex items-center gap-2 text-sm text-muted-foreground">
+          <div className="mb-6 flex items-center gap-2 text-sm text-muted-foreground sticky top-[53px] bg-sidebar-primary-foreground py-2 z-20">
             <SidebarTrigger />
             <Link href="/" className="flex items-center gap-1 hover:text-foreground">
               Home

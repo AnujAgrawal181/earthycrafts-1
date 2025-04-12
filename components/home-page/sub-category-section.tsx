@@ -1,4 +1,5 @@
 import GridLayout from "../grid-layout";
+import SubCategoryCarousel from "./components/sub-category-carousel";
 
 const categories1 = [
   {
@@ -80,10 +81,15 @@ const categories3 = [
 
 export default function SubCategorySection() {
   return (
-    <section className="container flex flex-col gap-8 mx-auto md:px-24 sm:px-16 px-8 md:py-12 py-4">
-      <GridLayout categories={categories1} className="" right />
-      <GridLayout categories={categories2} className="" />
-      <GridLayout categories={categories3} className="" />
+    <section className="md:py-12 py-4">
+      <h1 className="md:text-5xl text-4xl font-bold text-center mb-12">Shop by Our Collection</h1>
+      <div className="container lg:flex hidden flex-col gap-8 mx-auto md:px-24 sm:px-16 px-8 ">
+        <GridLayout categories={categories1} className="" right />
+        <GridLayout categories={categories2} className="" />
+        <GridLayout categories={categories3} className="" />
+      </div>
+
+      <SubCategoryCarousel categories={[...categories1, ...categories2, ...categories3]} />
     </section>
   );
 }

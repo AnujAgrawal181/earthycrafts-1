@@ -1,4 +1,3 @@
-import BackgroundVideo from "@/components/video/background-video";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
@@ -6,25 +5,22 @@ import Image from "next/image";
 export default function HeroSection() {
   const text = "More than just handicraft, a symphony of natural stone and design.";
 
-  const landscapeVideo = "https://bseuburnlk.ufs.sh/f/qq9xtZ1seAvycvd2SwJuyfq493Yi7VxRAZmMlNvjh6CD5LP8";
-  const portraitVideo = "https://bseuburnlk.ufs.sh/f/qq9xtZ1seAvyvnez94u9dIKFSu3x2U5kXC7s6GO4jaWgZEqT";
-
   return (
     <main className="relative">
-      {/* Landscape Intro Video */}
-      <BackgroundVideo
-        src={landscapeVideo}
-        className="md:absolute md:block hidden top-0 right-0 brightness-75 z-0"
-        format="webm"
-        poster="/videos/intro-landscape.png"
+      <Image
+        className="md:hidden absolute top-0 right-0 brightness-75 z-0"
+        src="/videos/intro-portrait.png"
+        alt="Earthycrafts background"
+        fill
+        priority
       />
 
-      {/* Portrait Intro Video */}
-      <BackgroundVideo
-        src={portraitVideo}
-        className="md:hidden absolute top-0 right-0 brightness-75 z-0"
-        format="webm"
-        poster="/videos/intro-portrait.png"
+      <Image
+        className="md:absolute md:block hidden top-0 right-0 brightness-75 z-0"
+        src="/videos/intro-landscape.png"
+        alt="Earthycrafts background"
+        fill
+        priority
       />
 
       <div className="z-10 text-white drop-shadow-lg h-screen flex flex-col gap-2 items-center justify-center text-center">

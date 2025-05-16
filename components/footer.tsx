@@ -1,16 +1,29 @@
 import Link from "next/link";
 import Image from "next/image";
 import { AtSign, Phone } from "lucide-react";
-import { FaWhatsapp, FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
+import {
+  FaWhatsapp,
+  FaFacebook,
+  FaInstagram,
+  FaLinkedin,
+} from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-background border-t z-50">
+    <footer className="w-full bg-noir border-t z-50 text-white">
       <div className="container mx-auto px-4 pt-8 ">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="flex flex-col items-start">
-            <Image src="/images/logo.svg" alt="Earthy Crafts Logo" width={150} height={50} priority />
-            <p className="mt-2 text-sm text-muted-foreground">Handmade with love</p>
+            <Image
+              src="/images/logo.svg"
+              alt="Earthy Crafts Logo"
+              width={150}
+              height={50}
+              priority
+            />
+            <p className="mt-2 text-sm text-muted-foreground">
+              Handmade with love
+            </p>
           </div>
           <div>
             <h3 className="font-semibold mb-4">Quick Links</h3>
@@ -47,20 +60,33 @@ export default function Footer() {
             <p className="text-sm mb-2 whitespace-nowrap">
               <Phone className="inline-flex w-4 mr-1 mb-0.5" />
               Phone:{" "}
-              <Link href={`tel:${process.env.NEXT_PUBLIC_PHONE}`} className=" hover:underline">
+              <Link
+                href={`tel:${process.env.NEXT_PUBLIC_PHONE}`}
+                className=" hover:underline"
+              >
                 {process.env.NEXT_PUBLIC_PHONE}
               </Link>
             </p>
             <p className="text-sm mb-2 whitespace-nowrap">
               <AtSign className="inline-flex w-4 mr-1 mb-0.5" />
               Email:{" "}
-              <Link href={`mailto:${process.env.NEXT_PUBLIC_EMAIL?.trim()}`} className=" hover:underline">
+              <Link
+                href={`mailto:${process.env.NEXT_PUBLIC_EMAIL?.trim()}`}
+                className=" hover:underline"
+              >
                 {process.env.NEXT_PUBLIC_EMAIL}
               </Link>
             </p>
             <div className="flex space-x-4">
-              <Link className="group" href={process.env.NEXT_PUBLIC_WHATSAPP_URL || "#"} target="_blank">
-                <FaWhatsapp size={24} className=" fill-green-600 group-hover:fill-green-800" />
+              <Link
+                className="group"
+                href={process.env.NEXT_PUBLIC_WHATSAPP_URL || "#"}
+                target="_blank"
+              >
+                <FaWhatsapp
+                  size={24}
+                  className="fill-green-600 group-hover:fill-green-800"
+                />
                 <span className=" sr-only">WhatsApp</span>
               </Link>
               <Link
@@ -69,7 +95,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground"
               >
-                <FaFacebook size={24} />
+                <FaFacebook size={24} className="fill-blue-500" />
                 <span className="sr-only">Facebook</span>
               </Link>
               <Link
@@ -78,7 +104,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground"
               >
-                <FaInstagram size={24} />
+                <FaInstagram size={24} className="fill-pink" />
                 <span className="sr-only">Instagram</span>
               </Link>
               <Link
@@ -87,7 +113,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground"
               >
-                <FaLinkedin size={24} />
+                <FaLinkedin size={24} className="fill-blue-400" />
                 <span className="sr-only">Twitter</span>
               </Link>
             </div>

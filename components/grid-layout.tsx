@@ -46,7 +46,10 @@ export default function GridLayout({
   return (
     <motion.div
       ref={ref}
-      className={cn("grid grid-cols-1 lg:grid-cols-2 gap-4 max-w-[1200px] mx-auto ", className)}
+      className={cn(
+        "grid grid-cols-1 lg:grid-cols-2 gap-4 max-w-[1200px] mx-auto ",
+        className
+      )}
       variants={containerVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
@@ -84,11 +87,15 @@ export default function GridLayout({
 
               <div className="absolute bottom-0 left-0 p-6 text-white flex justify-between w-full items-end">
                 <div>
-                  <p className="text-sm mb-2">{category.description}</p>
-                  <h2 className="text-2xl md:text-3xl font-semibold">
+                  <p className="text-dutchWhite text-sm mb-2">
+                    {category.description}
+                  </p>
+                  <h2 className="text-dutchWhite texttext-2xl md:text-3xl font-semibold">
                     {category.title === "Tukdi Art"
                       ? "Artisan Stone Mosaic"
-                      : category.title === "Bali Marble" || category.title === "Bali Stone" || category.title === "Bali"
+                      : ["Bali Marble", "Bali Stone", "Bali"].includes(
+                          category.title
+                        )
                       ? "Bali Stone"
                       : category.title}
                   </h2>

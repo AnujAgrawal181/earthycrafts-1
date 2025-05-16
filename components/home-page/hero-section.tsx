@@ -3,7 +3,8 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 
 export default function HeroSection() {
-  const text = "More than just handicraft, a symphony of natural stone and design.";
+  const text =
+    "More than just handicraft, a symphony of natural stone and design.";
 
   return (
     <main className="relative">
@@ -34,7 +35,10 @@ export default function HeroSection() {
           priority
         />
         {/* Tag line */}
-        <h3 className=" px-1 text-lg sm:text-3xl md:text-4xl font-semibold max-w-[700px] " aria-label={text}>
+        <h3
+          className="px-1 text-lg sm:text-3xl md:text-4xl font-semibold max-w-[700px] "
+          aria-label={text}
+        >
           {text}
         </h3>
         {/* Explore Action Button */}

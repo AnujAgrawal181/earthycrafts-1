@@ -81,7 +81,9 @@ export default function ProductCarousel2() {
 
   return (
     <div className="slider-container py-8 xl:px-16 lg:px-12 md:px-8 sm:px-6 px-4 overflow-hidden relative">
-      <h1 className="md:text-4xl text-3xl font-bold text-center mb-12">Which product is appealing your pallet?</h1>
+      <h1 className="md:text-4xl text-3xl font-lejour text-noir font-bold text-center mb-12">
+        Which product is appealing your pallet?
+      </h1>
 
       <Button
         size="icon"
@@ -106,8 +108,12 @@ export default function ProductCarousel2() {
         {...settings}
       >
         {isLoading
-          ? [1, 2, 3, 4, 5].map((index) => <Skeleton key={index} className="w-80 h-[480px]" />)
-          : products?.map((product, index) => <ProductCard key={index} product={product} />)}
+          ? [1, 2, 3, 4, 5].map((index) => (
+              <Skeleton key={index} className="w-80 h-[480px]" />
+            ))
+          : products?.map((product, index) => (
+              <ProductCard key={index} product={product} />
+            ))}
       </Slider>
     </div>
   );

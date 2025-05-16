@@ -81,6 +81,20 @@
   }
 }
 
+@font-face {
+  font-family: 'LeJourSerif';
+  src: url('/fonts/LeJourSerif/LeJourSerif.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Helvetica';
+  src: url('/fonts/Helvetica/Helvetica.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;

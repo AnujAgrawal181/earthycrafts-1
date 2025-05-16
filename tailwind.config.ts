@@ -15,9 +15,22 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        helvetica: ['Helvetica', 'sans-serif'],
+        lejour: ['LeJourSerif', 'serif']
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        noir: {
+          DEFAULT: '#50341F',
+        },
+        dutchWhite: {
+          DEFAULT: '#F1DFB7',
+        },
+        grullo: {
+          DEFAULT: '#ABA073',
+        },
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",

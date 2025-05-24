@@ -17,7 +17,6 @@ const config: Config = {
     extend: {
       fontFamily: {
         helvetica: ['Helvetica', 'sans-serif'],
-        lejour: ['LeJourSerif', 'serif']
       },
       colors: {
         background: "hsl(var(--background))",

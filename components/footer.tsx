@@ -15,7 +15,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="flex flex-col items-start">
             <Image
-              src="/images/logo.svg"
+              src="/images/logo-white.svg"
               alt="Earthy Crafts Logo"
               width={150}
               height={50}

@@ -18,7 +18,7 @@ export default function ProductCard({
   const mainImage = product.images.length === 1 ? product.images[0] : product?.images?.find((img) => img.main);
 
   return (
-    <Card className={cn(className, "w-80 overflow-hidden")}>
+    <Card className={cn(className, "w-80 overflow-hidden card")}>
       <CardContent className="p-0 w-80 overflow-hidden h-[480px] ">
         <Link href={`/products/${kebabCase(product.productCode)}`} target="_blank">
           <Image
@@ -29,8 +29,8 @@ export default function ProductCard({
             className=" object-cover h-[400px] rounded-lg overflow-hidden"
           />
           <div className="p-4 ">
-            <CardTitle>{product.name}</CardTitle>
-            <CardDescription>{product.stoneName}</CardDescription>
+            <CardTitle className="card-title-white">{product.name}</CardTitle>
+            <CardDescription className="card-dscn">{product.stoneName}</CardDescription>
           </div>
         </Link>
       </CardContent>

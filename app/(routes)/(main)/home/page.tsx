@@ -4,10 +4,10 @@ import GalleryGrid from "@/components/home-page/gallery-grid";
 import HeroSection from "@/components/home-page/hero-section";
 import ProductSlide2 from "@/components/home-page/product-slide2";
 import SubCategorySection from "@/components/home-page/sub-category-section";
-import WeCareSection from "@/components/home-page/we-care-section";
 import YourSpace from "@/components/home-page/your-space-section";
 
 export default async function Home() {
+  debugger
   return (
     <>
       <HeroSection />
@@ -17,7 +17,6 @@ export default async function Home() {
       <SubCategorySection />
       <CustomizeSection />
       <GalleryGrid />
-      <WeCareSection />
     </>
   );
 }

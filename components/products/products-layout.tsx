@@ -85,7 +85,7 @@ export default function ProductsLayout({ categories, products }: ProductsLayoutP
         <FilterParams setSelectedCategory={setSelectedCategory} setSelectedSubCategory={setSelectedSubCategory} />
       </Suspense>
       <SidebarProvider open={open} onOpenChange={setOpen} className=" bg-sidebar-primary-foreground">
-        <Sidebar className=" inset-y-[71px]   z-10">
+        <Sidebar className=" inset-y-[64px]   z-10">
           <SidebarHeader>
             <Link href="/products">
               <Button
@@ -187,8 +187,8 @@ export default function ProductsLayout({ categories, products }: ProductsLayoutP
           </SidebarContent>
         </Sidebar>
 
-        <div className="flex-1 p-6">
-          <div className="mb-6 flex items-center gap-2 text-sm text-muted-foreground sticky top-[53px] bg-sidebar-primary-foreground py-2 z-20">
+        <div className="flex-1 p-6 bg-dutchwhite">
+          <div className="mb-6 flex items-center bg-dutchwhite cafenor-font gap-2 text-sm text-muted-foreground sticky top-[63px] bg-sidebar-primary-foreground py-2 z-20">
             <SidebarTrigger />
             <Link href="/" className="flex items-center gap-1 hover:text-foreground">
               Home
@@ -209,7 +209,7 @@ export default function ProductsLayout({ categories, products }: ProductsLayoutP
             )}
           </div>
 
-          <div className="grid justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
+          <div className="grid p-3 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
             <Suspense fallback={<Skeleton />}>{filteredProducts.length === 0 && <div>No products found</div>}</Suspense>
             <Suspense fallback={<Skeleton />}>
               {filteredProducts.map((product) => (

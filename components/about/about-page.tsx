@@ -56,7 +56,7 @@ export default function AboutPage() {
       <div className="relative py-16">
         {/* Fixed OM symbol */}
         <div className="z-0 absolute top-1/2 -translate-y-1/2 inset-0 flex items-center justify-center opacity-50 pointer-events-none">
-          <Image src="/images/om.svg" alt="OM symbol" width={800} height={800} />
+          <Image src="/images/om.svg" className="om-image" alt="OM symbol" width={800} height={800} />
         </div>
 
         {/* Header text */}

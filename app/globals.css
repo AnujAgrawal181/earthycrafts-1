@@ -81,12 +81,12 @@
   }
 }
 
-@font-face {
+/* @font-face {
   font-family: 'LeJourSerif';
   src: url('/fonts/LeJourSerif/LeJourSerif.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
-}
+} */
 
 @font-face {
   font-family: 'Helvetica';
@@ -155,4 +155,55 @@
 
 .pin-container {
   animation: fadeIn 0.5s ease;
+}
+
+.heroText  {
+ 
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  margin-left: -45%;
+  width: 90%;
+  border-radius: 10px;
+  color: #fff;
+  padding: 10px;
+  font-size: 12px;
+  text-align: -webkit-center !important;
+  z-index: 99;
+
+}
+.heroText.p {
+  font-size: 2rem;
+}
+.bg-primary {
+  background-color: #50341F !important;
+}
+.bg-dutchwhite {
+  background-color: #F1DFB7;
+}
+.card {
+  background-color: #ABA073;
+}
+.card-title-white {
+  color: white;
+  /* font-family: 'Helvetica'; */
+}
+.card-dscn {
+  color: #F1DFB7;
+}
+.bg-sidebar{
+  background-color: #50341F;
+  color: #F1DFB7;
+}
+.cafenor-font{
+  color: #50341F !important;
+}
+.index-top {
+  z-index: 99;
+}
+.om-image {
+  filter: opacity(50%) invert(31%);
+}
+button[data-sidebar="menu-button"].bg-accent .capitalize {
+  color: #50341F;
 }

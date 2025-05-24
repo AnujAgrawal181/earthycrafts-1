@@ -94,7 +94,7 @@ const BreadcrumbEllipsis = ({
   <span
     role="presentation"
     aria-hidden="true"
-    className={cn("flex h-9 w-9 items-center justify-center", className)}
+    className={cn("flex h-9 w-9 items-center justify-center bg-primary ", className)}
     {...props}
   >
     <DotsHorizontalIcon className="h-4 w-4" />

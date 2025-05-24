@@ -26,7 +26,7 @@ export default function Navbar({ className }: { className?: string }) {
           {/* Centered Logo */}
           <Link href="/" className="font-extrabold text-3xl">
             <Image
-              src="/images/logo.svg"
+              src="/images/logo.png"
               width={150}
               height={70}
               alt="Logo"
@@ -39,8 +39,8 @@ export default function Navbar({ className }: { className?: string }) {
       </nav>
 
       {/* Navbar for Large & Medium Devices */}
-      <nav className={cn("w-full", className)}>
-        <div className="lg:flex bg-dutchWhite hidden justify-between py-4 px-10 z-50">
+      <nav className={cn("w-full index-top", className)}>
+        <div className="lg:flex bg-dutchWhite hidden justify-between py-2 px-10 z-50">
           {/* Left-side links list for Large & Medium Devices */}
           <NavigationMenu>
             <NavigationMenuList className="flex gap-6 font-medium items-center">
@@ -72,7 +72,7 @@ export default function Navbar({ className }: { className?: string }) {
           {/* Centered Logo */}
           <Link href="/home" className="font-extrabold text-3xl">
             <Image
-              src="/images/logo.svg"
+              src="/images/logo.png"
               width={150}
               height={70}
               alt="Logo"

@@ -18,7 +18,7 @@ import {
 export default function Navbar({ className }: { className?: string }) {
   return (
     <>
-      <nav className={cn("lg:hidden w-full ", className)}>
+      <nav className={cn("lg:hidden w-full index-top", className)}>
         <div className="flex bg-dutchWhite justify-between py-2 px-3 z-10">
           {/* Navbar Sheet */}
           <NavbarSheet />

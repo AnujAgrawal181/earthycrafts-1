@@ -207,3 +207,37 @@
 button[data-sidebar="menu-button"].bg-accent .capitalize {
   color: #50341F;
 }
+.products-container {
+  display: inline-flex !important;
+  flex-wrap: wrap !important;
+  justify-content: space-between;
+}
+.products-container .card, .products-container .card .card-content {
+  width: 16rem;
+}
+
+.nav-sheet {
+  background-color: #50341F;
+  color: #F1DFB7;
+  z-index: 99;
+  
+}
+
+.nav-sheet .border-b {
+  
+  border-color: #50341F;
+}
+.nav-sheet h2{
+  color: #F1DFB7;
+}
+
+svg.h-4.w-4.shrink-0.text-muted-foreground.transition-transform.duration-200 {
+  color: #F1DFB7;
+}
+
+.shrink-0.bg-border.h-\[1px\].w-full {
+  background-color: #50341F;
+}
+.bg-grullo {
+  background-color: #ABA073;
+}

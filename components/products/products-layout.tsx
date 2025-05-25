@@ -209,7 +209,7 @@ export default function ProductsLayout({ categories, products }: ProductsLayoutP
             )}
           </div>
 
-          <div className="grid p-3 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
+          <div className="grid p-3 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 products-container">
             <Suspense fallback={<Skeleton />}>{filteredProducts.length === 0 && <div>No products found</div>}</Suspense>
             <Suspense fallback={<Skeleton />}>
               {filteredProducts.map((product) => (

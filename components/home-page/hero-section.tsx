@@ -4,19 +4,11 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 
 export default function HeroSection() {
 
-  const text =
-    "More than just handicraft, a symphony of natural stone and design.";
+  // const text =
+    // "More than just handicraft, a symphony of natural stone and design.";
 
   return (
     <main className="relative">
-      <div className='heroText'>
-        <h3
-          className="px-1 text-lg sm:text-3xl md:text-2xl font-semibold max-w-[700px] "
-          aria-label={text}
-        >
-          {text}
-        </h3>
-      </div>
       <Carousel autoPlay={true} interval={2000} showThumbs={false} infiniteLoop={true} >
         <div key="SET01">
           <img src="/images/heroSection/SET01.png" />

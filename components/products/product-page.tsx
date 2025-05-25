@@ -63,22 +63,22 @@ export default function ProductDetails({ product }: { product: INewProduct }) {
             ))}
           </div>
         </div>
-        <Card>
+        <Card className="card">
           <CardContent className="p-6 space-y-6">
             <div>
-              <h1 className="text-3xl font-bold">{product.name}</h1>
-              <p className="text-gray-600 mt-2">{product.description}</p>
+              <h1 className="text-3xl font-bold cafenor-font">{product.name}</h1>
+              <p className="text-gray-600 mt-2 card-title-white ">{product.description}</p>
             </div>
 
             <Separator />
 
-            <div className="grid grid-cols-2 gap-4 capitalize">
+            <div className="grid grid-cols-2 gap-4 capitalize card-title-white">
               <div>
-                <h2 className="font-semibold">Product Code</h2>
+                <h2 className="font-semibold ">Product Code</h2>
                 <p>{product.productCode}</p>
               </div>
               <div>
-                <h2 className="font-semibold">Stone Name</h2>
+                <h2 className="font-semibold ">Stone Name</h2>
                 <p>{product.stoneName}</p>
               </div>
               <div>
@@ -107,7 +107,7 @@ export default function ProductDetails({ product }: { product: INewProduct }) {
               </div>
             </div>
 
-            <div className="flex gap-4">
+            <div className="flex gap-4 ">
               <EnquireProduct productCode={product.productCode} productName={product.name} />
 
               <ShareProduct productCode={product.productCode} productName={product.name} />
@@ -115,8 +115,8 @@ export default function ProductDetails({ product }: { product: INewProduct }) {
 
             <Separator />
 
-            <div>
-              <h2 className="text-xl font-semibold mb-2">Features</h2>
+            <div className="card-title-white">
+              <h2 className="text-xl font-semibold mb-2 ">Features</h2>
               <ul className="list-disc pl-5 space-y-1">
                 {featurePoints.map((item, index) => (
                   <li key={index}>

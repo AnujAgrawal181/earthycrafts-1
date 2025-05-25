@@ -34,7 +34,7 @@ export default function Loader() {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="fixed inset-0 z-50 flex items-center justify-center"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-dutchwhite"
         >
           <div className="relative w-full max-w-md px-4">
             <motion.div

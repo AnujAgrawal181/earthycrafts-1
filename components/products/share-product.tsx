@@ -66,7 +66,7 @@ export default function ShareProduct({ productCode, productName }: { productCode
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button size="lg" variant="outline" className="text-base sm:w-full w-fit">
+        <Button size="lg" variant="outline" className="text-base sm:w-full w-fit bg-grullo">
           <span className="sm:not-sr-only sr-only">Share</span>
           <Share2 />
         </Button>

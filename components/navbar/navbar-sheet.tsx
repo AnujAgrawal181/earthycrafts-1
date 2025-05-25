@@ -19,12 +19,12 @@ export default function NavbarSheet() {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button variant="outline" size="icon">
+        <Button className="nav-sheet" variant="outline" size="icon">
           <Menu className="h-6 w-6" />
           <span className="sr-only">Open menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="w-[300px] sm:w-[400px] p-0">
+      <SheetContent side="left" className="w-[300px] sm:w-[400px] p-0 nav-sheet">
         <div className="flex h-full flex-col">
           <SheetHeader className="sm:p-6 p-4">
             <SheetTitle className="text-2xl">Menu</SheetTitle>

@@ -15,7 +15,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const path = usePathname();
-
   return (
     <Providers>
       <Head>

@@ -13,10 +13,9 @@ export default async function Home() {
       <HeroSection />
       <CategorySection />
       <ProductSlide2 />
-      <YourSpace />
+      {/* <YourSpace /> */}
       <SubCategorySection />
       <CustomizeSection />
-      <GalleryGrid />
     </>
   );
 }

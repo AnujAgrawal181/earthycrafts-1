@@ -210,7 +210,7 @@ button[data-sidebar="menu-button"].bg-accent .capitalize {
 .products-container {
   display: inline-flex !important;
   flex-wrap: wrap !important;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 .products-container .card, .products-container .card .card-content {
   width: 16rem;

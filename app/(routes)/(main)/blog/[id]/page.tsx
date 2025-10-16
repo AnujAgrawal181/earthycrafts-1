@@ -1,4 +1,30 @@
 import { Blog } from "@/lib/schema";
+import { Metadata } from "next";
+
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+  const { id } = params;
+  const blog = await Blog.findById(id);
+
+  return {
+    title: blog?.title ? `${blog.title} - Earthycrafts Blog` : "Blog Post - Earthycrafts",
+    description: blog?.content?.[0]?.substring(0, 160) || "Read our latest blog post at Earthycrafts.",
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+      },
+    },
+    openGraph: {
+      title: blog?.title || "Blog Post",
+      description: blog?.content?.[0]?.substring(0, 160) || "Read our latest blog post.",
+      url: `https://earthycrafts.com/blog/${id}`,
+      siteName: "Earthycrafts",
+      type: "article",
+    },
+  };
+}
 
 export default async function BlogPage({ params }: { params: { id: string } }) {
   const { id } = params;

@@ -2,12 +2,37 @@ import type { Metadata } from "next";
 import "./globals.css";
 import TopLoader from "@/components/loaders/top-loader";
 import { Suspense } from "react";
-import Head from "next/head";
 import Script from "next/script";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://earthycrafts.com"),
   title: "Earthycrafts",
   description: "Handmade with love.",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
+  manifest: "/site.webmanifest",
+  appleWebApp: {
+    title: "Earthycrafts",
+  },
 };
 
 export default function RootLayout({
@@ -22,20 +47,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" data-theme="light">
-      <Head>
-        <link
-          rel="icon"
-          type="image/png"
-          href="/favicon-96x96.png"
-          sizes="96x96"
-        />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
+      <head>
         <link
           rel="preload"
           as="video"
@@ -43,31 +55,28 @@ export default function RootLayout({
           type="video/webm"
         />
         <link rel="preload" as="video" href={portraitVideo} type="video/webm" />
-        <meta name="apple-mobile-web-app-title" content="Earthycrafts" />
-        <link rel="manifest" href="/site.webmanifest" />
-      </Head>
-      <Script
-        strategy="afterInteractive"
-        src="https://www.googletagmanager.com/gtag/js?id=G-8ZLD7YGKHN"
-      />
-      <Script
-        id="google-analytics"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-8ZLD7YGKHN', { page_path: window.location.pathname });
-            `,
-        }}
-      />
-
+      </head>
       <body className={`font-helvetica antialiased bg-dutchWhite`}>
         <Suspense fallback={<div>Loading...</div>}>
           <TopLoader />
         </Suspense>
         {children}
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-8ZLD7YGKHN"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-8ZLD7YGKHN', { page_path: window.location.pathname });
+            `,
+          }}
+        />
       </body>
     </html>
   );

@@ -4,6 +4,43 @@ import type { INewProduct } from "@/lib/schema";
 import StoneImageCarousel from "@/components/inspiration/components/stone-image-card";
 import { lowerCase } from "lodash";
 import { notFound } from "next/navigation";
+import { Metadata } from "next";
+
+export async function generateMetadata({ params }: { params: { stone: string } }): Promise<Metadata> {
+  const stoneName = lowerCase(params.stone);
+  const stoneInfo = await getStoneInfo(stoneName);
+
+  if (!stoneInfo) {
+    return {
+      title: "Stone Not Found - Earthycrafts",
+      robots: {
+        index: false,
+        follow: true,
+      },
+    };
+  }
+
+  return {
+    title: `${stoneInfo.name} - Stones & Crystals - Earthycrafts`,
+    description: stoneInfo.description?.[0] || `Learn about ${stoneInfo.name} and explore products made with this beautiful stone.`,
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+      },
+    },
+    openGraph: {
+      title: `${stoneInfo.name} - Earthycrafts`,
+      description: stoneInfo.description?.[0] || `Learn about ${stoneInfo.name}.`,
+      url: `https://earthycrafts.com/stones/${params.stone}`,
+      siteName: "Earthycrafts",
+      type: "website",
+      images: stoneInfo.images?.[0] ? [{ url: stoneInfo.images[0] }] : [],
+    },
+  };
+}
 
 export default async function StonePage({ params }: { params: { stone: string } }) {
   const stoneName = lowerCase(params.stone);

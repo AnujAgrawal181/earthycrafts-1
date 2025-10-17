@@ -20,6 +20,10 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Dashboard | Earthycrafts",
   description: "Dashboard for Earthycrafts.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default async function RootLayout({

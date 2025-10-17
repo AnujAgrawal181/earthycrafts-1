@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 import { connectDB } from "@/lib/db";
-import { Blog } from "@/lib/schema";
+import { Blog, NewProduct } from "@/lib/schema";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://earthycrafts.com";
@@ -70,8 +70,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     }));
 
+    // Fetch products
+    const products = await NewProduct.find({}, "productCode updatedAt").lean();
+    const productPages: MetadataRoute.Sitemap = products.map((product) => ({
+      url: `${baseUrl}/products/${product.productCode}`,
+      lastModified: new Date(product.updatedAt as Date),
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    }));
+
     // Combine all pages
-    return [...staticPages, ...blogPages];
+    return [...staticPages, ...blogPages, ...productPages];
   } catch (error) {
     console.error("Error generating sitemap:", error);
     // Return at least static pages if database connection fails

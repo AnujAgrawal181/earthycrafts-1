@@ -4,6 +4,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Gallery - Earthycrafts",
   description: "Browse our gallery of beautiful handmade crafts, home decor, and artisanal products.",
+  alternates: {
+    canonical: "https://earthycrafts.com/gallery",
+  },
   robots: {
     index: true,
     follow: true,

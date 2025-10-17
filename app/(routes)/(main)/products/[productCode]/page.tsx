@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import ProductDetails from "@/components/products/product-page";
 import { INewProduct } from "@/lib/schema";
 import { Metadata } from "next";
+import { generateProductSchema, generateBreadcrumbSchema } from "@/lib/structured-data";
 
 async function getProduct(id: string): Promise<INewProduct | null> {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/product/${id}`, {
@@ -33,6 +34,9 @@ export async function generateMetadata({ params }: { params: { productCode: stri
   return {
     title: `${product.name} - Earthycrafts`,
     description: product.description || `Buy ${product.name} at Earthycrafts. Handmade with love.`,
+    alternates: {
+      canonical: `https://earthycrafts.com/products/${params.productCode}`,
+    },
     robots: {
       index: true,
       follow: true,
@@ -59,5 +63,27 @@ export default async function ProductPage({ params }: { params: { productCode: s
     notFound();
   }
 
-  return <ProductDetails product={product} />;
+  // Generate structured data
+  const productSchema = generateProductSchema(product);
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "https://earthycrafts.com" },
+    { name: "Products", url: "https://earthycrafts.com/products" },
+    { name: product.name, url: `https://earthycrafts.com/products/${params.productCode}` },
+  ]);
+
+  return (
+    <>
+      {/* Product Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      {/* Breadcrumb Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <ProductDetails product={product} />
+    </>
+  );
 }

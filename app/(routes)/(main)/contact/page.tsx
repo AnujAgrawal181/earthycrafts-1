@@ -4,6 +4,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contact Us - Earthycrafts",
   description: "Get in touch with Earthycrafts. We'd love to hear from you about custom orders, inquiries, or any questions.",
+  alternates: {
+    canonical: "https://earthycrafts.com/contact",
+  },
   robots: {
     index: true,
     follow: true,

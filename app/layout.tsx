@@ -3,6 +3,7 @@ import "./globals.css";
 import TopLoader from "@/components/loaders/top-loader";
 import { Suspense } from "react";
 import Script from "next/script";
+import { generateOrganizationSchema, generateWebsiteSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://earthycrafts.com"),
@@ -45,6 +46,9 @@ export default function RootLayout({
   const portraitVideo =
     "https://bseuburnlk.ufs.sh/f/qq9xtZ1seAvyvnez94u9dIKFSu3x2U5kXC7s6GO4jaWgZEqT";
 
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
   return (
     <html lang="en" data-theme="light">
       <head>
@@ -55,6 +59,16 @@ export default function RootLayout({
           type="video/webm"
         />
         <link rel="preload" as="video" href={portraitVideo} type="video/webm" />
+        {/* Organization Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        {/* Website Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
       </head>
       <body className={`font-helvetica antialiased bg-dutchWhite`}>
         <Suspense fallback={<div>Loading...</div>}>

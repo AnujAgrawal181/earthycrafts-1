@@ -4,6 +4,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Custom Orders - Earthycrafts",
   description: "Request custom handmade crafts tailored to your preferences. We create unique pieces just for you.",
+  alternates: {
+    canonical: "https://earthycrafts.com/customization",
+  },
   robots: {
     index: true,
     follow: true,

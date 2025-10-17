@@ -28,7 +28,5 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
-    // Optional: Add host directive (some search engines use this)
-    host: baseUrl,
   };
 }

@@ -12,7 +12,7 @@ export const GET = async () => {
     const blogs = await Blog.find({}, "_id updatedAt").lean();
 
     // ✅ Generate static pages
-    const staticPages = ["/home", "/about", "/contact", "/products", "/gallery", "/stones"];
+    const staticPages = ["/", "/about", "/contact", "/products", "/gallery", "/stones"];
 
     // ✅ Generate sitemap XML
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>

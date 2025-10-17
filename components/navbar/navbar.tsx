@@ -70,7 +70,7 @@ export default function Navbar({ className }: { className?: string }) {
           </NavigationMenu>
 
           {/* Centered Logo */}
-          <Link href="/home" className="font-extrabold text-3xl">
+          <Link href="/" className="font-extrabold text-3xl">
             <Image
               src="/images/logo.png"
               width={150}

@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Earthycrafts - Handmade Crafts with Love",
     description: "Discover unique handmade crafts, home decor, and artisanal products at Earthycrafts.",
-    url: "https://earthycrafts.com/home",
+    url: "https://earthycrafts.com",
     siteName: "Earthycrafts",
     type: "website",
   },
@@ -37,3 +37,4 @@ export default async function Home() {
     </>
   );
 }
+

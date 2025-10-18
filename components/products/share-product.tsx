@@ -19,7 +19,7 @@ export default function ShareProduct({ productCode, productName }: { productCode
   const [link, setLink] = useState("");
 
   useEffect(() => {
-    const productLink = `https://www.earthycrafts.com/products/${kebabCase(productCode)}`;
+    const productLink = `https://earthycrafts.com/products/${kebabCase(productCode)}`;
     const markdownMessage = `**${productName}** (**${productCode.toUpperCase()}**) - a perfect choice for those who appreciate quality and style.\n\n${productLink}`;
 
     const message = `<b>${productName}</b> (<b>${productCode.toUpperCase()}</b>) - a perfect choice for those who appreciate quality and style.<br/><br/><span class=" text-blue-500">${productLink}</span>`;

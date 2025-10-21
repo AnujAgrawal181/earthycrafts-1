@@ -12,7 +12,7 @@ export default function SearchCards({ product, setOpen }: { product: INewProduct
   return (
     <TooltipContext context={product.name}>
       <Link
-        href={"/products/" + kebabCase(product.productCode)}
+        href={"/products/" + product.slug}
         className=" grid grid-cols-3 gap-2 hover:shadow-md shadow-sm rounded-md bg-neutral-50 overflow-hidden"
         onClick={() => setOpen(false)}
       >

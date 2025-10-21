@@ -1,6 +1,7 @@
 import { Blog } from "@/lib/schema";
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/db";
+import { generateSlug, ensureUniqueSlug } from "@/lib/slug-utils";
 
 // -------------------------------------
 // GET is used to get all blog posts
@@ -42,8 +43,18 @@ export async function POST(req: Request) {
       return NextResponse.json({ message: "Missing required fields" }, { status: 400 });
     }
 
+    // Generate slug from blog title
+    const baseSlug = generateSlug(title);
+
+    // Get all existing slugs to ensure uniqueness
+    const existingBlogs = await Blog.find({}, { slug: 1 });
+    const existingSlugs = existingBlogs.map((b) => b.slug).filter(Boolean);
+
+    // Ensure the slug is unique
+    const slug = ensureUniqueSlug(baseSlug, existingSlugs);
+
     // Create a new blog post
-    const blog = await Blog.create({ title, content });
+    const blog = await Blog.create({ title, slug, content });
 
     return NextResponse.json(blog);
   } catch (error) {

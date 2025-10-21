@@ -44,6 +44,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/blog" className="text-sm hover:underline">
+                  Blog
+                </Link>
+              </li>
+              <li>
                 <Link href="/contact" className="text-sm hover:underline">
                   Customer Service
                 </Link>

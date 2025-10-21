@@ -2,18 +2,18 @@ import { NewProduct } from "@/lib/schema";
 import { NextResponse, NextRequest } from "next/server";
 import { Types } from "mongoose";
 import { connectDB } from "@/lib/db";
-import { camelCase } from "lodash";
 
 // -------------------------------------
-// GET: Retrieve a product by ID
+// GET: Retrieve a product by slug
 // -------------------------------------
 export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
   try {
     await connectDB(); // Connect to the database
 
-    const { id } = params; // Get the product ID
+    const { id } = params; // Get the product slug
 
-    const product = await NewProduct.findOne({ productCode: camelCase(id).toUpperCase() }); // Query the product
+    // Query by slug (case-insensitive)
+    const product = await NewProduct.findOne({ slug: id.toLowerCase() });
 
     if (!product) {
       return NextResponse.json(

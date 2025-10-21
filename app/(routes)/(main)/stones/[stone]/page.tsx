@@ -20,6 +20,8 @@ export async function generateMetadata({ params }: { params: { stone: string } }
     };
   }
 
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://earthycrafts.com";
+
   return {
     title: `${stoneInfo.name} - Stones & Crystals - Earthycrafts`,
     description: stoneInfo.description?.[0] || `Learn about ${stoneInfo.name} and explore products made with this beautiful stone.`,
@@ -34,7 +36,7 @@ export async function generateMetadata({ params }: { params: { stone: string } }
     openGraph: {
       title: `${stoneInfo.name} - Earthycrafts`,
       description: stoneInfo.description?.[0] || `Learn about ${stoneInfo.name}.`,
-      url: `https://earthycrafts.com/stones/${params.stone}`,
+      url: `${baseUrl}/stones/${params.stone}`,
       siteName: "Earthycrafts",
       type: "website",
       images: stoneInfo.images?.[0] ? [{ url: stoneInfo.images[0] }] : [],

@@ -55,6 +55,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
   ];
 
   try {
@@ -62,18 +68,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     await connectDB();
 
     // Fetch blogs
-    const blogs = await Blog.find({}, "_id updatedAt").lean();
+    const blogs = await Blog.find({}, "slug updatedAt").lean();
     const blogPages: MetadataRoute.Sitemap = blogs.map((blog) => ({
-      url: `${baseUrl}/blog/${blog._id}`,
+      url: `${baseUrl}/blog/${blog.slug}`,
       lastModified: new Date(blog.updatedAt as Date),
       changeFrequency: "weekly" as const,
       priority: 0.7,
     }));
 
     // Fetch products
-    const products = await NewProduct.find({}, "productCode updatedAt").lean();
+    const products = await NewProduct.find({}, "slug updatedAt").lean();
     const productPages: MetadataRoute.Sitemap = products.map((product) => ({
-      url: `${baseUrl}/products/${product.productCode}`,
+      url: `${baseUrl}/products/${product.slug}`,
       lastModified: new Date(product.updatedAt as Date),
       changeFrequency: "weekly" as const,
       priority: 0.8,

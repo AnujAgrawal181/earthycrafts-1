@@ -132,7 +132,7 @@ export default function ContactPage() {
               </p>
               {/* <Link
                   className="hover:text-neutral-700 w-fit flex items-center whitespace-pre-wrap"
-                  href={`https://wa.me/918949181484`}
+                  href={process.env.NEXT_PUBLIC_WHATSAPP_URL || "https://wa.me/918949181484"}
                   target="_blank"
                 >
                   <FaWhatsapp className="w-5 h-5 mr-2 fill-green-600" />

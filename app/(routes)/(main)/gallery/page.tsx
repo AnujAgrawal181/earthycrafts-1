@@ -1,11 +1,13 @@
 import GalleryPage from "@/components/inspiration/gallery-page";
 import { Metadata } from "next";
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://earthycrafts.com";
+
 export const metadata: Metadata = {
   title: "Gallery - Earthycrafts",
   description: "Browse our gallery of beautiful handmade crafts, home decor, and artisanal products.",
   alternates: {
-    canonical: "https://earthycrafts.com/gallery",
+    canonical: `${baseUrl}/gallery`,
   },
   robots: {
     index: true,
@@ -18,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Gallery - Earthycrafts",
     description: "Browse our gallery of beautiful handmade crafts and home decor.",
-    url: "https://earthycrafts.com/gallery",
+    url: `${baseUrl}/gallery`,
     siteName: "Earthycrafts",
     type: "website",
   },

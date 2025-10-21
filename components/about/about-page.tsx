@@ -37,16 +37,19 @@ const craftingSections = [
 ];
 
 export default function AboutPage() {
+  const landscapeVideoUrl = process.env.NEXT_PUBLIC_ABOUT_LANDSCAPE_VIDEO_URL || "https://bseuburnlk.ufs.sh/f/qq9xtZ1seAvyUPYKmK6fAdBP8qeLX3MNxI1nOzSv0kTb42gQ";
+  const portraitVideoUrl = process.env.NEXT_PUBLIC_ABOUT_PORTRAIT_VIDEO_URL || "https://bseuburnlk.ufs.sh/f/qq9xtZ1seAvyhLOmmWR6GaOA5qigTN7tHsZMKY3dbwJe0QyB";
+
   return (
     <main className="min-h-screen bg-transparent overflow-hidden">
       <div className="relative">
         <BackgroundVideo
-          src="https://bseuburnlk.ufs.sh/f/qq9xtZ1seAvyUPYKmK6fAdBP8qeLX3MNxI1nOzSv0kTb42gQ"
+          src={landscapeVideoUrl}
           className="md:block hidden  z-50"
           format="webm"
         />
         <BackgroundVideo
-          src="https://bseuburnlk.ufs.sh/f/qq9xtZ1seAvyhLOmmWR6GaOA5qigTN7tHsZMKY3dbwJe0QyB"
+          src={portraitVideoUrl}
           className="md:hidden z-50"
           format="webm"
         />

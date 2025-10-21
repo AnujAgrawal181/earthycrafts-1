@@ -2,7 +2,6 @@ import { Check, CopyIcon, Link, MoreHorizontal, Share2 } from "lucide-react";
 import { Button } from "../ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
 import { useEffect, useState } from "react";
-import { kebabCase } from "lodash";
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -12,14 +11,15 @@ import {
   TwitterIcon,
 } from "react-share";
 
-export default function ShareProduct({ productCode, productName }: { productCode: string; productName: string }) {
+export default function ShareProduct({ slug, productName, productCode }: { slug: string; productName: string; productCode: string }) {
   const [message, setMessage] = useState("");
   const [markdownMessage, setMarkdownMessage] = useState("");
   const [copied, setCopied] = useState<"message" | "link" | false>(false);
   const [link, setLink] = useState("");
 
   useEffect(() => {
-    const productLink = `https://earthycrafts.com/products/${kebabCase(productCode)}`;
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://earthycrafts.com";
+    const productLink = `${baseUrl}/products/${slug}`;
     const markdownMessage = `**${productName}** (**${productCode.toUpperCase()}**) - a perfect choice for those who appreciate quality and style.\n\n${productLink}`;
 
     const message = `<b>${productName}</b> (<b>${productCode.toUpperCase()}</b>) - a perfect choice for those who appreciate quality and style.<br/><br/><span class=" text-blue-500">${productLink}</span>`;
@@ -27,7 +27,7 @@ export default function ShareProduct({ productCode, productName }: { productCode
     setMessage(message);
     setMarkdownMessage(markdownMessage);
     setLink(productLink);
-  }, [productCode, productName]);
+  }, [slug, productName, productCode]);
 
   const copyMessage = () => {
     try {

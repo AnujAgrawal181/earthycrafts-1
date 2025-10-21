@@ -6,6 +6,7 @@ import mongoose, { Schema, Document, Model, Types } from "mongoose";
 export interface INewProduct extends Document {
   _id: Types.ObjectId;
   name: string;
+  slug: string;
   images: { image: string; main: boolean }[];
   description: string;
   productCode: string;
@@ -25,6 +26,12 @@ const NewProductSchema = new Schema(
     name: {
       type: String,
       required: true,
+    },
+    slug: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true,
     },
     images: [
       {
@@ -134,6 +141,7 @@ if (mongoose.models.Gallery) {
 export interface IBlog extends Document {
   _id: Types.ObjectId;
   title: string;
+  slug: string;
   content: string[];
   createdAt?: Date;
   updatedAt?: Date;
@@ -144,6 +152,12 @@ const BlogSchema: Schema = new Schema(
     title: {
       type: String,
       required: true,
+    },
+    slug: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true,
     },
     content: {
       type: [String], // Array of strings for the blog content

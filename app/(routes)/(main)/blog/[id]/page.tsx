@@ -8,7 +8,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
   try {
     await connectDB();
     const { id } = params;
-    const blog = await Blog.findById(id);
+    const blog = await Blog.findOne({ slug: id.toLowerCase() });
 
     if (!blog) {
       return {
@@ -21,11 +21,13 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
       };
     }
 
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://earthycrafts.com";
+
     return {
       title: `${blog.title} - Earthycrafts Blog`,
       description: blog.content?.[0]?.substring(0, 160) || "Read our latest blog post at Earthycrafts.",
       alternates: {
-        canonical: `https://earthycrafts.com/blog/${id}`,
+        canonical: `${baseUrl}/blog/${blog.slug}`,
       },
       robots: {
         index: true,
@@ -38,7 +40,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
       openGraph: {
         title: blog.title,
         description: blog.content?.[0]?.substring(0, 160) || "Read our latest blog post.",
-        url: `https://earthycrafts.com/blog/${id}`,
+        url: `${baseUrl}/blog/${blog.slug}`,
         siteName: "Earthycrafts",
         type: "article",
       },
@@ -60,18 +62,20 @@ export default async function BlogPage({ params }: { params: { id: string } }) {
   try {
     await connectDB();
     const { id } = params;
-    const blog = await Blog.findById(id);
+    const blog = await Blog.findOne({ slug: id.toLowerCase() });
 
     if (!blog) {
       notFound();
     }
 
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://earthycrafts.com";
+
     // Generate structured data
-    const articleSchema = generateArticleSchema(blog, id);
+    const articleSchema = generateArticleSchema(blog, blog.slug);
     const breadcrumbSchema = generateBreadcrumbSchema([
-      { name: "Home", url: "https://earthycrafts.com" },
-      { name: "Blog", url: "https://earthycrafts.com/blog" },
-      { name: blog.title, url: `https://earthycrafts.com/blog/${id}` },
+      { name: "Home", url: baseUrl },
+      { name: "Blog", url: `${baseUrl}/blog` },
+      { name: blog.title, url: `${baseUrl}/blog/${blog.slug}` },
     ]);
 
     return (

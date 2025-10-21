@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -15,12 +16,12 @@ export default function BreadcrumbsContext({ items, className }: { items: string
       <BreadcrumbList>
         {items.map((item, index) =>
           index === items.length - 1 ? (
-            <BreadcrumbItem key={index}>
+            <BreadcrumbItem key={`breadcrumb-item-${index}`}>
               <BreadcrumbPage>{item}</BreadcrumbPage>
             </BreadcrumbItem>
           ) : (
-            <>
-              <BreadcrumbItem key={index}>
+            <React.Fragment key={`breadcrumb-fragment-${index}`}>
+              <BreadcrumbItem>
                 <BreadcrumbLink href={`/${kebabCase(item)}`}>
                   {item === "tukdi art"
                     ? "Artisan Stone Mosaic"
@@ -31,8 +32,8 @@ export default function BreadcrumbsContext({ items, className }: { items: string
                     : lowerCase(item)}
                 </BreadcrumbLink>
               </BreadcrumbItem>
-              <BreadcrumbSeparator key={index} />
-            </>
+              <BreadcrumbSeparator />
+            </React.Fragment>
           )
         )}
       </BreadcrumbList>

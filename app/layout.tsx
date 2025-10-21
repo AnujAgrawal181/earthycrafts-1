@@ -42,9 +42,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const landscapeVideo =
-    "https://bseuburnlk.ufs.sh/f/qq9xtZ1seAvycvd2SwJuyfq493Yi7VxRAZmMlNvjh6CD5LP8";
+    process.env.NEXT_PUBLIC_LANDSCAPE_VIDEO_URL || "https://bseuburnlk.ufs.sh/f/qq9xtZ1seAvycvd2SwJuyfq493Yi7VxRAZmMlNvjh6CD5LP8";
   const portraitVideo =
-    "https://bseuburnlk.ufs.sh/f/qq9xtZ1seAvyvnez94u9dIKFSu3x2U5kXC7s6GO4jaWgZEqT";
+    process.env.NEXT_PUBLIC_PORTRAIT_VIDEO_URL || "https://bseuburnlk.ufs.sh/f/qq9xtZ1seAvyvnez94u9dIKFSu3x2U5kXC7s6GO4jaWgZEqT";
 
   const organizationSchema = generateOrganizationSchema();
   const websiteSchema = generateWebsiteSchema();

@@ -4,8 +4,8 @@ import { INewProduct } from "@/lib/schema";
 import { Metadata } from "next";
 import { generateProductSchema, generateBreadcrumbSchema } from "@/lib/structured-data";
 
-async function getProduct(id: string): Promise<INewProduct | null> {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/product/${id}`, {
+async function getProduct(slug: string): Promise<INewProduct | null> {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/product/${slug}`, {
     cache: "no-store",
   });
 
@@ -31,11 +31,13 @@ export async function generateMetadata({ params }: { params: { productCode: stri
     };
   }
 
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://earthycrafts.com";
+
   return {
     title: `${product.name} - Earthycrafts`,
     description: product.description || `Buy ${product.name} at Earthycrafts. Handmade with love.`,
     alternates: {
-      canonical: `https://earthycrafts.com/products/${params.productCode}`,
+      canonical: `${baseUrl}/products/${product.slug}`,
     },
     robots: {
       index: true,
@@ -48,7 +50,7 @@ export async function generateMetadata({ params }: { params: { productCode: stri
     openGraph: {
       title: product.name,
       description: product.description || `Buy ${product.name} at Earthycrafts.`,
-      url: `https://earthycrafts.com/products/${params.productCode}`,
+      url: `${baseUrl}/products/${product.slug}`,
       siteName: "Earthycrafts",
       type: "website",
       images: product.images?.[0]?.image ? [{ url: product.images[0].image }] : [],
@@ -63,12 +65,14 @@ export default async function ProductPage({ params }: { params: { productCode: s
     notFound();
   }
 
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://earthycrafts.com";
+
   // Generate structured data
   const productSchema = generateProductSchema(product);
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "https://earthycrafts.com" },
-    { name: "Products", url: "https://earthycrafts.com/products" },
-    { name: product.name, url: `https://earthycrafts.com/products/${params.productCode}` },
+    { name: "Home", url: baseUrl },
+    { name: "Products", url: `${baseUrl}/products` },
+    { name: product.name, url: `${baseUrl}/products/${product.slug}` },
   ]);
 
   return (

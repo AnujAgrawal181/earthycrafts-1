@@ -4,7 +4,6 @@ import Image from "next/image";
 import { imgPlaceholder } from "@/public/assets/some-data";
 import Link from "next/link";
 
-import { kebabCase } from "lodash";
 import { cn } from "@/lib/utils";
 
 export default function ProductCard({
@@ -20,7 +19,7 @@ export default function ProductCard({
   return (
     <Card className={cn(className, "w-80 overflow-hidden card")}>
       <CardContent className="p-0 w-80 overflow-hidden h-[480px] card-content ">
-        <Link href={`/products/${kebabCase(product.productCode)}`} target="_blank">
+        <Link href={`/products/${product.slug}`} target="_blank">
           <Image
             src={mainImage?.image || imgPlaceholder}
             alt={product.name}

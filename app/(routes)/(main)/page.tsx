@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Earthycrafts - Handmade Crafts with Love",
   description: "Discover unique handmade crafts, home decor, and artisanal products at Earthycrafts. Each piece is crafted with love and care.",
   alternates: {
-    canonical: "https://earthycrafts.com",
+    canonical: `${process.env.NEXT_PUBLIC_SITE_URL || "https://earthycrafts.com"}`,
   },
   robots: {
     index: true,
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Earthycrafts - Handmade Crafts with Love",
     description: "Discover unique handmade crafts, home decor, and artisanal products at Earthycrafts.",
-    url: "https://earthycrafts.com",
+    url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://earthycrafts.com"}`,
     siteName: "Earthycrafts",
     type: "website",
   },

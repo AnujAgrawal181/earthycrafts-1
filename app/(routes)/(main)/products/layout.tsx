@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Products - Earthycrafts",
     description: "Browse our collection of handmade crafts and home decor.",
-    url: "https://earthycrafts.com/products",
+    url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://earthycrafts.com"}/products`,
     siteName: "Earthycrafts",
     type: "website",
   },

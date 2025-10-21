@@ -110,7 +110,7 @@ export default function ProductDetails({ product }: { product: INewProduct }) {
             <div className="flex gap-4 ">
               <EnquireProduct productCode={product.productCode} productName={product.name} />
 
-              <ShareProduct productCode={product.productCode} productName={product.name} />
+              <ShareProduct slug={product.slug} productCode={product.productCode} productName={product.name} />
             </div>
 
             <Separator />

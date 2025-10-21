@@ -1,6 +1,7 @@
 import { NewProduct } from "@/lib/schema";
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/db";
+import { generateSlug, ensureUniqueSlug } from "@/lib/slug-utils";
 
 // -------------------------------------
 // GET is used to get all products
@@ -66,9 +67,20 @@ export async function POST(req: Request) {
       return NextResponse.json({ message: "Missing required fields" }, { status: 400 });
     }
 
+    // Generate slug from product name
+    const baseSlug = generateSlug(name);
+
+    // Get all existing slugs to ensure uniqueness
+    const existingProducts = await NewProduct.find({}, { slug: 1 });
+    const existingSlugs = existingProducts.map((p) => p.slug).filter(Boolean);
+
+    // Ensure the slug is unique
+    const slug = ensureUniqueSlug(baseSlug, existingSlugs);
+
     // Create a new product
     const product = await NewProduct.create({
       name,
+      slug,
       images,
       description,
       productCode,

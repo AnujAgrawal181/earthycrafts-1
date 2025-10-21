@@ -126,12 +126,6 @@ export default function Footer() {
         </div>
         <div className="mt-8 py-4 border-t text-center sm:text-sm text-xs  text-muted-foreground flex justify-between">
           <span>© {new Date().getFullYear()} Earthycrafts.</span>
-          <span>
-            Developed by{" "}
-            <Link className="font-bold" href="https://www.mohitjeswani.live">
-              MJDevs
-            </Link>
-          </span>
         </div>
       </div>
     </footer>

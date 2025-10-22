@@ -1,0 +1,47 @@
+module.exports = {
+  apps: [
+    {
+      name: "earthycrafts",
+      script: "npm",
+      args: "start",
+      cwd: "/var/www/earthycrafts-1", // Update this path
+      instances: "max",
+      exec_mode: "cluster",
+      env: {
+        NODE_ENV: "production",
+        NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: "pk_test_ZmluZXItc3dhbi04MC5jbGVyay5hY2NvdW50cy5kZXYk",
+        CLERK_SECRET_KEY: "sk_test_120zWIGcRvvlrjNOO82D7WeFhTMBVwjp46uWGAG1IN",
+        NEXT_PUBLIC_CLERK_SIGN_IN_URL: "/sign-in",
+        NEXT_PUBLIC_CLERK_SIGN_UP_URL: "/sign-up",
+        NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL: "/dashboard/admin",
+        NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL: "/dashboard/admin",
+        NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL: "/dashboard/admin",
+        NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL: "/dashboard/admin",
+        MONGODB_URI: "mongodb+srv://admin:admin@cluster0.9x14r.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+        UPLOADTHING_TOKEN: "eyJhcGlLZXkiOiJza19saXZlX2Y1YjY0YzJjZjc3MTNmMWE3NjBkMGNiOTllYTAwYmNmYTA1NjJhODFhMGM1NmM0MmZjNzhjZmE1YTQ0ZGE2MzMiLCJhcHBJZCI6ImJzZXVidXJubGsiLCJyZWdpb25zIjpbInNlYTEiXX0=",
+        NEXT_PUBLIC_SITE_URL: "https://earthycrafts.com", // Update to your domain
+        NEXT_PUBLIC_API_URL: "https://earthycrafts.com",
+        NEXT_PUBLIC_LANDSCAPE_VIDEO_URL: "https://bseuburnlk.ufs.sh/f/qq9xtZ1seAvycvd2SwJuyfq493Yi7VxRAZmMlNvjh6CD5LP8",
+        NEXT_PUBLIC_PORTRAIT_VIDEO_URL: "https://bseuburnlk.ufs.sh/f/qq9xtZ1seAvyvnez94u9dIKFSu3x2U5kXC7s6GO4jaWgZEqT",
+        NEXT_PUBLIC_ABOUT_LANDSCAPE_VIDEO_URL: "https://bseuburnlk.ufs.sh/f/qq9xtZ1seAvyUPYKmK6fAdBP8qeLX3MNxI1nOzSv0kTb42gQ",
+        NEXT_PUBLIC_ABOUT_PORTRAIT_VIDEO_URL: "https://bseuburnlk.ufs.sh/f/qq9xtZ1seAvyhLOmmWR6GaOA5qigTN7tHsZMKY3dbwJe0QyB",
+        NEXT_PUBLIC_WHATSAPP_URL: "https://wa.me/918949181484",
+        NEXT_PUBLIC_FB_URL: "https://www.facebook.com/profile.php?id=61569352586694&rdid=YeApPi5vHAIXP1wj&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1B4TTmuCSS%2F#",
+        NEXT_PUBLIC_INSTAGRAM_URL: "https://www.instagram.com/_earthycrafts_?igsh=MXNxbzYya3Y2cHBmYw%3D%3D",
+        NEXT_PUBLIC_LINKEDIN_URL: "https://www.linkedin.com/company/earthycrafts/",
+        NEXT_PUBLIC_EMAIL: "admin@earthycrafts.com",
+        NEXT_PUBLIC_PHONE: "+91 89491 81484",
+        NEXT_PUBLIC_CLERK_SIGN_IN_FORCE_REDIRECT_URL: "/dashboard/admin",
+        NEXT_PUBLIC_CLERK_SIGN_UP_FORCE_REDIRECT_URL: "/dashboard/admin",
+      },
+      error_file: "/var/log/pm2/earthycrafts-error.log",
+      out_file: "/var/log/pm2/earthycrafts-out.log",
+      log_date_format: "YYYY-MM-DD HH:mm:ss Z",
+      merge_logs: true,
+      autorestart: true,
+      watch: false,
+      max_memory_restart: "1G",
+    },
+  ],
+};
+

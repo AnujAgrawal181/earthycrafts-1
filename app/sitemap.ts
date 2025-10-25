@@ -2,6 +2,9 @@ import { MetadataRoute } from "next";
 import { connectDB } from "@/lib/db";
 import { Blog, NewProduct } from "@/lib/schema";
 
+// Revalidate sitemap every 24 hours
+export const revalidate = 86400;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://earthycrafts.com";
 

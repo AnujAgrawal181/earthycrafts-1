@@ -4,9 +4,12 @@ import { INewProduct } from "@/lib/schema";
 import { Metadata } from "next";
 import { generateProductSchema, generateBreadcrumbSchema } from "@/lib/structured-data";
 
+// Enable ISR (Incremental Static Regeneration) - revalidate every hour
+export const revalidate = 3600;
+
 async function getProduct(slug: string): Promise<INewProduct | null> {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/product/${slug}`, {
-    cache: "no-store",
+    cache: "force-cache",
   });
 
   if (!response.ok) {

@@ -4,6 +4,9 @@ import { generateArticleSchema, generateBreadcrumbSchema } from "@/lib/structure
 import { connectDB } from "@/lib/db";
 import { notFound } from "next/navigation";
 
+// Enable ISR (Incremental Static Regeneration) - revalidate every hour
+export const revalidate = 3600;
+
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   try {
     await connectDB();

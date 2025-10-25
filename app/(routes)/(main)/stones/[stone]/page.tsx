@@ -6,6 +6,9 @@ import { lowerCase } from "lodash";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 
+// Enable ISR (Incremental Static Regeneration) - revalidate every hour
+export const revalidate = 3600;
+
 export async function generateMetadata({ params }: { params: { stone: string } }): Promise<Metadata> {
   const stoneName = lowerCase(params.stone);
   const stoneInfo = await getStoneInfo(stoneName);
@@ -39,7 +42,7 @@ export async function generateMetadata({ params }: { params: { stone: string } }
       url: `${baseUrl}/stones/${params.stone}`,
       siteName: "Earthycrafts",
       type: "website",
-      images: stoneInfo.images?.[0] ? [{ url: stoneInfo.images[0] }] : [],
+      images: stoneInfo.images?.[0] ? [{ url: stoneInfo.images[0].url }] : [],
     },
   };
 }

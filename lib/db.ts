@@ -1,12 +1,14 @@
 import mongoose from "mongoose";
 
-const MONGODB_URI = String(process.env.MONGODB_URI);
-
-if (!MONGODB_URI) {
-  throw new Error("Please define the MONGODB_URI environment variable inside .env.local");
-}
+const MONGODB_URI = String(process.env.MONGODB_URI || "");
 
 async function connectDB() {
+  // Skip connection if MONGODB_URI is not available (e.g., during build time)
+  if (!MONGODB_URI) {
+    console.warn("MONGODB_URI not set - skipping database connection");
+    return;
+  }
+
   try {
     await mongoose.connect(MONGODB_URI);
   } catch (error) {

@@ -4,6 +4,9 @@ import { Metadata } from "next";
 import BlogCard from "@/components/blog/blog-card";
 import { generateBreadcrumbSchema } from "@/lib/structured-data";
 
+// Enable ISR (Incremental Static Regeneration) - revalidate every hour
+export const revalidate = 3600;
+
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://earthycrafts.com";
 
 export const metadata: Metadata = {
